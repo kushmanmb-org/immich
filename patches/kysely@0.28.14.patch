@@ -1,0 +1,90 @@
+diff --git a/dist/cjs/helpers/postgres.d.ts b/dist/cjs/helpers/postgres.d.ts
+index 5d2d7ef8c5ddf481bab8a425566d10afbabdc58c..f8a9a11a566efe4fffa09c19062f46e2d59abeb0 100644
+--- a/dist/cjs/helpers/postgres.d.ts
++++ b/dist/cjs/helpers/postgres.d.ts
+@@ -50,7 +50,7 @@ import type { ShallowDehydrateValue, ShallowDehydrateObject, Simplify } from '..
+  * from "person"
+  * ```
+  */
+-export declare function jsonArrayFrom<O>(expr: Expression<O>): RawBuilder<Simplify<ShallowDehydrateObject<O>>[]>;
++export declare function jsonArrayFrom<O>(expr: Expression<O>): RawBuilder<Simplify<O>[]>;
+ /**
+  * A postgres helper for turning a subquery (or other expression) into a JSON object.
+  *
+@@ -102,7 +102,7 @@ export declare function jsonArrayFrom<O>(expr: Expression<O>): RawBuilder<Simpli
+  * from "person"
+  * ```
+  */
+-export declare function jsonObjectFrom<O>(expr: Expression<O>): RawBuilder<Simplify<ShallowDehydrateObject<O>> | null>;
++export declare function jsonObjectFrom<O>(expr: Expression<O>): RawBuilder<Simplify<O> | null>;
+ /**
+  * The PostgreSQL `json_build_object` function.
+  *
+diff --git a/dist/cjs/query-builder/function-module.d.ts b/dist/cjs/query-builder/function-module.d.ts
+index 6143e25364b52d5730d2f2e19c2e0098c9769ac3..03873908a22581b87da55aa4106747faf639fe8f 100644
+--- a/dist/cjs/query-builder/function-module.d.ts
++++ b/dist/cjs/query-builder/function-module.d.ts
+@@ -565,8 +565,8 @@ export interface FunctionModule<DB, TB extends keyof DB> {
+      * group by "person"."first_name"
+      * ```
+      */
+-    jsonAgg<T extends (TB & string) | Expression<unknown>>(table: T): AggregateFunctionBuilder<DB, TB, T extends TB ? Simplify<ShallowDehydrateObject<Selectable<DB[T]>>>[] : T extends Expression<infer O> ? Simplify<ShallowDehydrateObject<O>>[] : never>;
+-    jsonAgg<RE extends StringReference<DB, TB>>(column: RE): AggregateFunctionBuilder<DB, TB, ShallowDehydrateValue<SelectType<ExtractTypeFromStringReference<DB, TB, RE>>>[] | null>;
++    jsonAgg<T extends (TB & string) | Expression<unknown>>(table: T): AggregateFunctionBuilder<DB, TB, T extends TB ? Selectable<DB[T]>[] : T extends Expression<infer O> ? O[] : never>;
++    jsonAgg<RE extends StringReference<DB, TB>>(column: RE): AggregateFunctionBuilder<DB, TB, SelectType<ExtractTypeFromStringReference<DB, TB, RE>>[] | null>;
+     /**
+      * Creates a to_json function call.
+      *
+@@ -587,6 +587,6 @@ export interface FunctionModule<DB, TB extends keyof DB> {
+      * inner join "pet" on "pet"."owner_id" = "person"."id"
+      * ```
+      */
+-    toJson<T extends (TB & string) | Expression<unknown>>(table: T): ExpressionWrapper<DB, TB, T extends TB ? Simplify<ShallowDehydrateObject<Selectable<DB[T]>>> : T extends Expression<infer O> ? Simplify<ShallowDehydrateObject<O>> : never>;
++    toJson<T extends (TB & string) | Expression<unknown>>(table: T): ExpressionWrapper<DB, TB, T extends TB ? Selectable<DB[T]> : T extends Expression<infer O> ? O : never>;
+ }
+ export declare function createFunctionModule<DB, TB extends keyof DB>(): FunctionModule<DB, TB>;
+diff --git a/dist/esm/helpers/postgres.d.ts b/dist/esm/helpers/postgres.d.ts
+index 5d2d7ef8c5ddf481bab8a425566d10afbabdc58c..f8a9a11a566efe4fffa09c19062f46e2d59abeb0 100644
+--- a/dist/esm/helpers/postgres.d.ts
++++ b/dist/esm/helpers/postgres.d.ts
+@@ -50,7 +50,7 @@ import type { ShallowDehydrateValue, ShallowDehydrateObject, Simplify } from '..
+  * from "person"
+  * ```
+  */
+-export declare function jsonArrayFrom<O>(expr: Expression<O>): RawBuilder<Simplify<ShallowDehydrateObject<O>>[]>;
++export declare function jsonArrayFrom<O>(expr: Expression<O>): RawBuilder<Simplify<O>[]>;
+ /**
+  * A postgres helper for turning a subquery (or other expression) into a JSON object.
+  *
+@@ -102,7 +102,7 @@ export declare function jsonArrayFrom<O>(expr: Expression<O>): RawBuilder<Simpli
+  * from "person"
+  * ```
+  */
+-export declare function jsonObjectFrom<O>(expr: Expression<O>): RawBuilder<Simplify<ShallowDehydrateObject<O>> | null>;
++export declare function jsonObjectFrom<O>(expr: Expression<O>): RawBuilder<Simplify<O> | null>;
+ /**
+  * The PostgreSQL `json_build_object` function.
+  *
+diff --git a/dist/esm/query-builder/function-module.d.ts b/dist/esm/query-builder/function-module.d.ts
+index 6143e25364b52d5730d2f2e19c2e0098c9769ac3..03873908a22581b87da55aa4106747faf639fe8f 100644
+--- a/dist/esm/query-builder/function-module.d.ts
++++ b/dist/esm/query-builder/function-module.d.ts
+@@ -565,8 +565,8 @@ export interface FunctionModule<DB, TB extends keyof DB> {
+      * group by "person"."first_name"
+      * ```
+      */
+-    jsonAgg<T extends (TB & string) | Expression<unknown>>(table: T): AggregateFunctionBuilder<DB, TB, T extends TB ? Simplify<ShallowDehydrateObject<Selectable<DB[T]>>>[] : T extends Expression<infer O> ? Simplify<ShallowDehydrateObject<O>>[] : never>;
+-    jsonAgg<RE extends StringReference<DB, TB>>(column: RE): AggregateFunctionBuilder<DB, TB, ShallowDehydrateValue<SelectType<ExtractTypeFromStringReference<DB, TB, RE>>>[] | null>;
++    jsonAgg<T extends (TB & string) | Expression<unknown>>(table: T): AggregateFunctionBuilder<DB, TB, T extends TB ? Selectable<DB[T]>[] : T extends Expression<infer O> ? O[] : never>;
++    jsonAgg<RE extends StringReference<DB, TB>>(column: RE): AggregateFunctionBuilder<DB, TB, SelectType<ExtractTypeFromStringReference<DB, TB, RE>>[] | null>;
+     /**
+      * Creates a to_json function call.
+      *
+@@ -587,6 +587,6 @@ export interface FunctionModule<DB, TB extends keyof DB> {
+      * inner join "pet" on "pet"."owner_id" = "person"."id"
+      * ```
+      */
+-    toJson<T extends (TB & string) | Expression<unknown>>(table: T): ExpressionWrapper<DB, TB, T extends TB ? Simplify<ShallowDehydrateObject<Selectable<DB[T]>>> : T extends Expression<infer O> ? Simplify<ShallowDehydrateObject<O>> : never>;
++    toJson<T extends (TB & string) | Expression<unknown>>(table: T): ExpressionWrapper<DB, TB, T extends TB ? Selectable<DB[T]> : T extends Expression<infer O> ? O : never>;
+ }
+ export declare function createFunctionModule<DB, TB extends keyof DB>(): FunctionModule<DB, TB>;

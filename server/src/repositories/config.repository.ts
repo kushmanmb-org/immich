@@ -288,10 +288,6 @@ const getEnv = (): EnvData => {
     otel: {
       metrics: {
         hostMetrics: telemetries.has(ImmichTelemetry.Host),
-        apiMetrics: {
-          enable: telemetries.has(ImmichTelemetry.Api),
-          ignoreRoutes: excludePaths,
-        },
       },
     },
 
