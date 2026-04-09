@@ -1137,7 +1137,7 @@ wheels = [
 
 [[package]]
 name = "immich-ml"
-version = "2.3.1"
+version = "2.4.0"
 source = { editable = "." }
 dependencies = [
     { name = "aiocache" },
@@ -1416,7 +1416,7 @@ wheels = [
 
 [[package]]
 name = "locust"
-version = "2.42.5"
+version = "2.43.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "configargparse" },
@@ -1425,7 +1425,6 @@ dependencies = [
     { name = "flask-login" },
     { name = "gevent" },
     { name = "geventhttpclient" },
-    { name = "locust-cloud" },
     { name = "msgpack" },
     { name = "psutil" },
     { name = "pytest" },
@@ -1438,26 +1437,9 @@ dependencies = [
     { name = "typing-extensions", marker = "python_full_version < '3.12'" },
     { name = "werkzeug" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/8a/69/076f6a1eb4e5813eea864f5a9a5311385c5cc71c46377ed7cec824eca0a1/locust-2.42.5.tar.gz", hash = "sha256:83b8cfc38bd88b3d9daf9790be24239356ccd1160d9b357fa9c7af32907a8860", size = 1418586, upload-time = "2025-11-20T16:45:44.806Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/9d/c5/7d7bd50ac744bc209a4bcbeb74660d7ae450a44441737efe92ee9d8ea6a7/locust-2.43.3.tar.gz", hash = "sha256:b5d2c48f8f7d443e3abdfdd6ec2f7aebff5cd74fab986bcf1e95b375b5c5a54b", size = 1445349, upload-time = "2026-02-12T09:55:34.591Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/2d/a9/ce92490466f719e658b5815a4778669c12a4b907ff7ca51e0a94baedf5b2/locust-2.42.5-py3-none-any.whl", hash = "sha256:fa654eb501bf4bad665310ead59c9d7b209d057717795fbbcc977f61af1fdf64", size = 1437168, upload-time = "2025-11-20T16:45:42.855Z" },
-]
-
-[[package]]
-name = "locust-cloud"
-version = "1.29.3"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "configargparse" },
-    { name = "gevent" },
-    { name = "platformdirs" },
-    { name = "python-engineio" },
-    { name = "python-socketio", extra = ["client"] },
-    { name = "tomli", marker = "python_full_version < '3.11'" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/35/51/7367b8f13df5fdda001b717574091ea223820be0e2d22caa0e9cfefba556/locust_cloud-1.29.3.tar.gz", hash = "sha256:1b88c1fa8eeb73557f3ab25e16b037283df9a48282be8e91fb4fae84ef7bb367", size = 457304, upload-time = "2025-11-26T13:37:19.318Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/6d/31/4850f0ac5e109007278dbf7d1368565ce43b589aa74e6c6c481c597968db/locust_cloud-1.29.3-py3-none-any.whl", hash = "sha256:1898f09287865b1590d44d5eb71586a40a3895c52bf9bfc826fd6a384fb389d5", size = 413421, upload-time = "2025-11-26T13:37:16.613Z" },
+    { url = "https://files.pythonhosted.org/packages/3d/d2/dc5379876d3a481720803653ea4d219f0c26f2d2b37c9243baaa16d0bc79/locust-2.43.3-py3-none-any.whl", hash = "sha256:e032c119b54a9d984cb74a936ee83cfd7d68b3c76c8f308af63d04f11396b553", size = 1463473, upload-time = "2026-02-12T09:55:31.727Z" },
 ]
 
 [[package]]
@@ -2653,7 +2635,7 @@ wheels = [
 
 [[package]]
 name = "requests"
-version = "2.32.3"
+version = "2.33.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "certifi" },
@@ -2661,9 +2643,9 @@ dependencies = [
     { name = "idna" },
     { name = "urllib3" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/63/70/2bf7780ad2d390a8d301ad0b550f1581eadbd9a20f896afe06353c2a2913/requests-2.32.3.tar.gz", hash = "sha256:55365417734eb18255590a9ff9eb97e9e1da868d4ccd6402399eaf68af20a760", size = 131218, upload-time = "2024-05-29T15:37:49.536Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/34/64/8860370b167a9721e8956ae116825caff829224fbca0ca6e7bf8ddef8430/requests-2.33.0.tar.gz", hash = "sha256:c7ebc5e8b0f21837386ad0e1c8fe8b829fa5f544d8df3b2253bff14ef29d7652", size = 134232, upload-time = "2026-03-25T15:10:41.586Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/f9/9b/335f9764261e915ed497fcdeb11df5dfd6f7bf257d4a6a2a686d80da4d54/requests-2.32.3-py3-none-any.whl", hash = "sha256:70761cfe03c773ceb22aa2f671b4757976145175cdfca038c02654d061d6dcc6", size = 64928, upload-time = "2024-05-29T15:37:47.027Z" },
+    { url = "https://files.pythonhosted.org/packages/56/5d/c814546c2333ceea4ba42262d8c4d55763003e767fa169adc693bd524478/requests-2.33.0-py3-none-any.whl", hash = "sha256:3324635456fa185245e24865e810cecec7b4caf933d7eb133dcde67d48cee69b", size = 65017, upload-time = "2026-03-25T15:10:40.382Z" },
 ]
 
 [[package]]
